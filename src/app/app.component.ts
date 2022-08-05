@@ -19,19 +19,19 @@ export class AppComponent {
   gameResult: string = ""
   aiOverallScore: number = 0;
   userOverallScore: number = 0;
-  btcAccount: string | null = localStorage.getItem('btcAccount') === null || '' ? '0' : localStorage.getItem('btcAccount');
+  btcAccount: any = localStorage.getItem('btcAccount') === null || '' ? '0' : localStorage.getItem('btcAccount');
   gameStatus: boolean = true;
 
   countGame(): void {
     this.roundCounter = this.roundCounter + 1
     let currentBtc = localStorage.getItem('btcAccount');
 
-    if (this.roundCounter === 5) {
+    if (this.roundCounter === 7) {
       this.gameStatus = false;
 
       if (this.userOverallScore > this.aiOverallScore) {
         this.userOverallScore;
-        if (this.userOverallScore <= 0.7) {
+        if (this.userOverallScore <= 1) {
           let newBtc = Number(currentBtc) + 0.1;
           localStorage.setItem('btcAccount', newBtc.toString().slice(0,3)) 
         } else {
@@ -48,7 +48,7 @@ export class AppComponent {
         this.gameResult = `You've lost the game`
       }
       
-    } else if(this.roundCounter === 6) {
+    } else if(this.roundCounter === 8) {
       this.roundCounter = 0;
       this.aiOverallScore = 0;
       this.userOverallScore = 0;
