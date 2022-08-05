@@ -19,7 +19,7 @@ export class AppComponent {
   gameResult: string = ""
   aiOverallScore: number = 0;
   userOverallScore: number = 0;
-  btcAccount: any = localStorage.getItem('btcAccount') === null || '' ? '0' : localStorage.getItem('btcAccount');
+  btcAccount: string | null = localStorage.getItem('btcAccount') === null || '' ? '0' : localStorage.getItem('btcAccount');
   gameStatus: boolean = true;
 
   countGame(): void {
